@@ -183,8 +183,29 @@
     /* Hero */
 
     .hero {
-      padding: 2.4rem 0 2.8rem;
+  padding: 2.8rem 0 3rem;
+  background-image: url('background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 0 0 24px 24px;
+  position: relative;
+  color: white;
+  min-height: 380px;
     }
+    }
+    .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  border-radius: 0 0 24px 24px;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 10;
+}
 
     .hero-grid {
       display: grid;
