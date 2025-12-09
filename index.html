@@ -339,6 +339,92 @@
       padding: 20px 0 28px;
     }
 
+    /* Scroll reveal animation */
+
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+
+    .section-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Smooth scroll for nav links */
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Budget simulator styles */
+
+    .budget-row {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .budget-row label {
+      font-size: 13px;
+      font-weight: 500;
+      color: #111827;
+    }
+
+    .budget-row input,
+    .budget-row select {
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      font-size: 13px;
+      background: #f9fafb;
+    }
+
+    .budget-row input:focus,
+    .budget-row select:focus {
+      outline: none;
+      border-color: #0ea5e9;
+      box-shadow: 0 0 0 1px rgba(14, 165, 233, 0.4);
+    }
+
+    .budget-hint {
+      font-size: 11px;
+      color: #6b7280;
+      margin-top: 2px;
+    }
+
+    .btn-budget {
+      margin-top: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(to right, #0ea5e9, #22c55e);
+      color: #f9fafb;
+      font-weight: 600;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 10px 26px rgba(34, 197, 94, 0.4);
+    }
+
+    .btn-budget:hover {
+      opacity: 0.95;
+    }
+
+    .budget-result {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #f9fafb;
+      border: 1px dashed #cbd5e1;
+      font-size: 13px;
+    }
+
+    .budget-result span {
+      color: #111827;
+    }
+
     /* RESPONSIVE */
 
     @media (max-width: 900px) {
@@ -655,51 +741,132 @@
 
     <!-- SKENARIO PAKET ROMBONGAN -->
     <section class="card">
-  <h2>Group package scenarios</h2>
-  <p class="muted">
-    These price estimates help students imagine the budget range before asking for a detailed quotation.
-    Final offers may adjust based on flight season, selected hotels, and departure city.
-  </p>
+      <h2>Group package scenarios</h2>
+      <p class="muted">
+        These price estimates help students imagine the budget range before asking for a detailed quotation.
+        Final offers may adjust based on flight season, selected hotels, and departure city.
+      </p>
 
-  <table class="scenario-table">
-    <tr>
-      <th>Scenario</th>
-      <th>Group size</th>
-      <th>Estimated cost range*</th>
-      <th>Suitable for</th>
-    </tr>
-    <tr>
-      <td>Compact trip</td>
-      <td>8 – 10 students</td>
-      <td>IDR 6.350.000 – 6.950.000 / pax</td>
-      <td>
-        Small study group, project team, or core members who prefer easier coordination
-        and flexible discussions during trip.
-      </td>
-    </tr>
-    <tr>
-      <td>Standard campus group</td>
-      <td>12 – 16 students</td>
-      <td>IDR 5.750.000 – 6.350.000 / pax</td>
-      <td>
-        Typical class or large organization division. Balanced atmosphere:
-        teamwork, splitting cost fairly, and comprehensive activities.
-      </td>
-    </tr>
-    <tr>
-      <td>Extended generation trip</td>
-      <td>18 – 24 students</td>
-      <td>IDR 5.350.000 – 5.950.000 / pax</td>
-      <td>
-        Graduation trip or multi-class collaboration with more documentation,
-        high-energy activities, and shared celebration moments.
-      </td>
-    </tr>
-  </table>
+      <table class="scenario-table">
+        <tr>
+          <th>Scenario</th>
+          <th>Group size</th>
+          <th>Estimated cost range*</th>
+          <th>Suitable for</th>
+        </tr>
+        <tr>
+          <td>Compact trip</td>
+          <td>8 – 10 students</td>
+          <td>IDR 6.350.000 – 6.950.000 / pax</td>
+          <td>
+            Small study group, project team, or core members who prefer easier coordination
+            and flexible discussions during trip.
+          </td>
+        </tr>
+        <tr>
+          <td>Standard campus group</td>
+          <td>12 – 16 students</td>
+          <td>IDR 5.750.000 – 6.350.000 / pax</td>
+          <td>
+            Typical class or large organization division. Balanced atmosphere:
+            teamwork, splitting cost fairly, and comprehensive activities.
+          </td>
+        </tr>
+        <tr>
+          <td>Extended generation trip</td>
+          <td>18 – 24 students</td>
+          <td>IDR 5.350.000 – 5.950.000 / pax</td>
+          <td>
+            Graduation trip or multi-class collaboration with more documentation,
+            high-energy activities, and shared celebration moments.
+          </td>
+        </tr>
+      </table>
 
-  <p style="font-size:12px;margin-top:6px;color:#6b7280;">
-    *Price excludes airfare and may vary depending on seasonality, availability, and campus departure city.
-  </p>
+      <p style="font-size:12px;margin-top:6px;color:#6b7280;">
+        *Price excludes airfare and may vary depending on seasonality, availability, and campus departure city.
+      </p>
+    </section>
+
+    <!-- BUDGET SIMULATION PER PERSON (TABEL) -->
+    <section class="card">
+      <h2>Budget simulation per person</h2>
+      <p class="muted">
+        This table helps students imagine how much money they need to prepare when airfare is included.
+        Values are examples for presentation and can be adjusted.
+      </p>
+
+      <table class="scenario-table">
+        <tr>
+          <th>Group size</th>
+          <th>Estimated trip cost</th>
+          <th>Estimated airfare</th>
+          <th>Total per person</th>
+        </tr>
+        <tr>
+          <td>8 students</td>
+          <td>IDR 6.950.000</td>
+          <td>IDR 3.200.000</td>
+          <td><strong>IDR 10.150.000</strong></td>
+        </tr>
+        <tr>
+          <td>12 students</td>
+          <td>IDR 6.350.000</td>
+          <td>IDR 3.200.000</td>
+          <td><strong>IDR 9.550.000</strong></td>
+        </tr>
+        <tr>
+          <td>16 students</td>
+          <td>IDR 5.950.000</td>
+          <td>IDR 3.200.000</td>
+          <td><strong>IDR 9.150.000</strong></td>
+        </tr>
+      </table>
+
+      <p style="font-size:12px;margin-top:6px;color:#6b7280;">
+        *Airfare is an estimate and may change based on departure city and travel season.
+      </p>
+    </section>
+
+    <!-- BUDGET SIMULATOR (FORM) -->
+    <section class="card">
+      <h2>Budget simulator</h2>
+      <p class="muted">
+        Use this simple tool to estimate total package budget before you ask for a detailed quotation.
+        Numbers are based on mid range prices from the scenarios above and exclude airfare.
+      </p>
+
+      <div class="budget-row">
+        <label for="budget-people">Group size</label>
+        <input type="number" id="budget-people" min="1" max="50" value="12">
+      </div>
+
+      <div class="budget-row">
+        <label for="budget-scenario">Scenario type</label>
+        <select id="budget-scenario">
+          <option value="6650000">Compact trip (8–10 students)</option>
+          <option value="6050000" selected>Standard campus group (12–16 students)</option>
+          <option value="5650000">Extended generation trip (18–24 students)</option>
+        </select>
+        <p class="budget-hint">
+          Values follow the group package scenarios and can be adjusted in class discussion.
+        </p>
+      </div>
+
+      <button type="button" class="btn-budget" id="budget-calc-btn">
+        Calculate budget
+      </button>
+
+      <div id="budget-result" class="budget-result">
+        <p>
+          <strong>Estimated package cost (group):</strong><br>
+          <span id="budget-total">–</span>
+        </p>
+        <p>
+          <strong>Approximate cost per person:</strong><br>
+          <span id="budget-perperson">–</span>
+        </p>
+      </div>
     </section>
 
   </aside>
@@ -709,6 +876,74 @@
 <footer>
   © UNITour &amp; Travel. Raja Ampat open trip for students and young travellers.
 </footer>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Scroll reveal
+    const revealEls = document.querySelectorAll(
+      '.header-gallery, .card, .booking-card'
+    );
+
+    revealEls.forEach(function (el) {
+      el.classList.add('section-reveal');
+    });
+
+    const observer = new IntersectionObserver(
+      function (entries, obs) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    revealEls.forEach(function (el) {
+      observer.observe(el);
+    });
+
+    // Budget simulator
+    const peopleInput = document.getElementById('budget-people');
+    const scenarioSelect = document.getElementById('budget-scenario');
+    const totalSpan = document.getElementById('budget-total');
+    const perSpan = document.getElementById('budget-perperson');
+    const calcBtn = document.getElementById('budget-calc-btn');
+
+    function formatIDR(value) {
+      try {
+        return new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR',
+          maximumFractionDigits: 0
+        }).format(value);
+      } catch (e) {
+        return 'IDR ' + value.toLocaleString('id-ID', { maximumFractionDigits: 0 });
+      }
+    }
+
+    function calcBudget() {
+      const people = parseInt(peopleInput.value, 10) || 0;
+      const pricePer = parseInt(scenarioSelect.value, 10) || 0;
+
+      if (people <= 0 || pricePer <= 0) {
+        totalSpan.textContent = '–';
+        perSpan.textContent = '–';
+        return;
+      }
+
+      const total = people * pricePer;
+      totalSpan.textContent = formatIDR(total);
+      perSpan.textContent = formatIDR(pricePer);
+    }
+
+    if (calcBtn && peopleInput && scenarioSelect) {
+      calcBtn.addEventListener('click', calcBudget);
+      calcBudget();
+    }
+  });
+</script>
 
 </body>
 </html>
